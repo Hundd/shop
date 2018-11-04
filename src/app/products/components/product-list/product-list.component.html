@@ -1,0 +1,11 @@
+<ul class="product-list">
+    <li
+        *ngFor="let product of products"
+        class="product-list__item"
+    >
+        <app-product
+            [product]="product"
+            (buy)="onBuy($event)"
+        ></app-product>
+    </li>
+</ul>

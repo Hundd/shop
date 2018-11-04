@@ -1,0 +1,58 @@
+<table class="product-table">
+    <thead>
+        <tr>
+            <th>Category</th>
+
+            <th class="product-image__wrapper">
+                <img
+                    [src]="photo"
+                    alt="product image"
+                    class="product-image"
+                >
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Name</td>
+
+            <td>{{ name }}</td>
+        </tr>
+
+        <tr>
+            <td>Description</td>
+
+            <td>{{ description }}</td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+
+            <td>{{ price | currency }}</td>
+        </tr>
+
+        <tr>
+            <td>Category</td>
+
+            <td>{{ displayedCategory }}</td>
+        </tr>
+
+        <tr>
+            <td>Available</td>
+
+            <td>{{ isAvailable? 'Yes' : 'No' }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button
+                    (click)="onBuy()"
+                    class="buy-button"
+                >
+                    Buy
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

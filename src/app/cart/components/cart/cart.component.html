@@ -1,0 +1,11 @@
+<div class="cart">
+    <div class="wrapper">
+        <h2>Goods in Cart:</h2>
+        <ul>
+            <li *ngFor="let product of uniqProducts">
+                {{ product.name }} ( {{ product.quantity }} )
+            </li>
+        </ul>
+        <h4>Total sum: {{ totalSum | currency }}</h4>
+    </div>
+</div>
