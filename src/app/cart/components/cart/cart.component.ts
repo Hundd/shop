@@ -1,5 +1,4 @@
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 
 import { CartService } from './../../services/cart.service';
 import {
@@ -25,9 +24,6 @@ export class CartComponent implements OnInit {
 
   ngOnChanges() {
     this.uniqProducts = this.cartService.getUniqProducts(this.products);
-    this.totalSum = this.products.reduce(
-      (acc, product) => acc + product.price,
-      0
-    );
+    this.totalSum = this.cartService.getTotalSum(this.products);
   }
 }

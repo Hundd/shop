@@ -13,8 +13,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService) {}
 
-  @Output('buy')
-  onBuying: EventEmitter<IProduct> = new EventEmitter();
+  @Output()
+  buy: EventEmitter<IProduct> = new EventEmitter();
 
   ngOnInit() {
     this.productService
@@ -23,6 +23,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onBuy(product) {
-    this.onBuying.emit(product);
+    this.buy.emit(product);
   }
 }

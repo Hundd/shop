@@ -1,5 +1,6 @@
-import { IProduct, IUniqProduct } from './../../products/models/product.model';
 import { Injectable } from '@angular/core';
+
+import { IProduct, IUniqProduct } from './../../products/models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class CartService {
         quantity
       })
     );
+  }
+
+  getTotalSum(products: IProduct[]) {
+    return products.reduce((acc, product) => acc + product.price, 0);
   }
 }
