@@ -1,3 +1,4 @@
+import { CartService } from './../../../cart/services/cart.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { ProductService } from './../../services/product.service';
@@ -11,10 +12,10 @@ import { IProduct } from '../../models/product.model';
 export class ProductListComponent implements OnInit {
   public products: IProduct[];
 
-  constructor(private productService: ProductService) {}
-
-  @Output()
-  buy: EventEmitter<IProduct> = new EventEmitter();
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.productService
@@ -22,7 +23,7 @@ export class ProductListComponent implements OnInit {
       .then(products => (this.products = products));
   }
 
-  onBuy(product) {
-    this.buy.emit(product);
+  onBuy(product: IProduct) {
+    this.cartService.addProduct(product);
   }
 }

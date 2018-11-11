@@ -10,25 +10,26 @@ export class ProductService {
   getProducts(): Promise<Array<IProduct>> {
     return Promise.resolve([
       {
+        id: Math.round(Math.random() * 1000).toString(),
         name: 'Motorola DynaTAC',
         description: 'Commercial portable cellular phone',
         price: 1299,
         category: ProductCategory.SmartPhone,
         isAvailable: true,
-        photo:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/DynaTAC8000X.jpg/245px-DynaTAC8000X.jpg'
+        photo: '/assets/images/phone.jpg'
       },
       {
+        id: Math.round(Math.random() * 1000).toString(),
         name: 'Nokia N800',
         description:
           'Tablet with no support for GSM voice communication, SMS, and MMS.',
         price: 1999,
         category: ProductCategory.Tablet,
         isAvailable: true,
-        photo:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/N800_frontside2.jpg/1280px-N800_frontside2.jpg'
+        photo: '/assets/images/tablet.jpg'
       },
       {
+        id: Math.round(Math.random() * 1000).toString(),
         name: 'Toughbook CF-29',
         description:
           'Toughbook is a trademarked brand name owned by Panasonic Corporation and refers to its line of rugged computers',
@@ -39,6 +40,7 @@ export class ProductService {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Panasonic_cf-29.jpg/300px-Panasonic_cf-29.jpg'
       },
       {
+        id: Math.round(Math.random() * 1000).toString(),
         name: 'IBM 5150',
         description:
           'The IBM Personal Computer, commonly known as the IBM PC, is the original version and progenitor of the\

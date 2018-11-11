@@ -2,6 +2,8 @@
     <li
         *ngFor="let product of products"
         class="product-list__item"
+        fxLayout="row"
+        fxLayouAlign="center stretch"
     >
         <app-product
             [product]="product"

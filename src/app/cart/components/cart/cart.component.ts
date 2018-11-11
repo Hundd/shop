@@ -5,6 +5,8 @@ import {
   IProduct,
   IUniqProduct
 } from './../../../products/models/product.model';
+import { Observable, from } from 'rxjs';
+import { switchMap, reduce, flatMap, tap, scan } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -12,18 +14,18 @@ import {
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  @Input()
-  private products: IProduct[];
-
-  public uniqProducts: IUniqProduct[];
-  public totalSum: number;
+  public uniqProducts$: Observable<IUniqProduct[]>;
+  public totalSum$: Observable<number>;
+  public count$: Observable<number>;
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.uniqProducts$ = this.cartService.products$;
+    this.totalSum$ = this.cartService.getTotalSum();
+    this.count$ = this.cartService.getTotalCount();
+    // this.uniqProducts$.subscribe(product => console.log(product));
 
-  ngOnChanges() {
-    this.uniqProducts = this.cartService.getUniqProducts(this.products);
-    this.totalSum = this.cartService.getTotalSum(this.products);
+    this.totalSum$.subscribe((val: number) => console.log(val));
   }
 }

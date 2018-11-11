@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { IProduct } from './products/models/product.model';
+import { CartService } from './cart/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,11 @@ import { IProduct } from './products/models/product.model';
 })
 export class AppComponent {
   public title = 'shop';
-  public cart: IProduct[] = [];
+  public cartIsNotEmpty$: Observable<boolean>;
 
-  onBuying(product: IProduct) {
-    this.cart = [...this.cart, product];
+  constructor(private cartService: CartService) {
+    this.cartIsNotEmpty$ = cartService.products$.pipe(
+      map(products => !!(products && products.length))
+    );
   }
 }

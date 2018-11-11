@@ -12,8 +12,8 @@ export class ProductComponent implements OnInit {
   @Input()
   product: IProduct;
 
-  @Output('buy')
-  onBuying: EventEmitter<IProduct> = new EventEmitter();
+  @Output()
+  buy: EventEmitter<IProduct> = new EventEmitter();
 
   public name: string;
   public description: string;
@@ -30,7 +30,6 @@ export class ProductComponent implements OnInit {
   }
 
   onBuy() {
-    console.log(`Buying ${this.name}...`);
-    this.onBuying.emit(this.product);
+    this.buy.emit(this.product);
   }
 }

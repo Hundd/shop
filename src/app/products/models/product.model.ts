@@ -4,11 +4,14 @@ export interface IProduct {
   price: number;
   category: ProductCategory;
   isAvailable: boolean;
+  id: string;
 }
 
 export interface IUniqProduct {
+  id: string;
   name: string;
   quantity: number;
+  price: number;
 }
 
 export class IProduct implements IProduct {

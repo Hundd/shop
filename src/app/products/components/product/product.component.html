@@ -1,58 +1,69 @@
-<table class="product-table">
-    <thead>
-        <tr>
-            <th>Category</th>
+<mat-card
+    class="product"
+    fxLayout="column"
+    fxLayoutGap="16px"
+>
+    <mat-card-header
+        fxLayout="row"
+        fxLayoutAlign="center"
+    >
+        <img
+            [src]="photo"
+            alt="product image"
+        >
+    </mat-card-header>
 
-            <th class="product-image__wrapper">
-                <img
-                    [src]="photo"
-                    alt="product image"
-                    class="product-image"
-                >
-            </th>
-        </tr>
-    </thead>
+    <mat-card-content fxFlex>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
 
-    <tbody>
-        <tr>
-            <td>Name</td>
+                    <th></th>
+                </tr>
+            </thead>
 
-            <td>{{ name }}</td>
-        </tr>
+            <tbody>
+                <tr>
+                    <td>Name</td>
 
-        <tr>
-            <td>Description</td>
+                    <td>{{ name }}</td>
+                </tr>
 
-            <td>{{ description }}</td>
-        </tr>
+                <tr>
+                    <td>Description</td>
 
-        <tr>
-            <td>Price</td>
+                    <td>{{ description }}</td>
+                </tr>
 
-            <td>{{ price | currency }}</td>
-        </tr>
+                <tr>
+                    <td>Price</td>
 
-        <tr>
-            <td>Category</td>
+                    <td>{{ price | currency }}</td>
+                </tr>
 
-            <td>{{ displayedCategory }}</td>
-        </tr>
+                <tr>
+                    <td>Category</td>
 
-        <tr>
-            <td>Available</td>
+                    <td>{{ displayedCategory }}</td>
+                </tr>
 
-            <td>{{ isAvailable? 'Yes' : 'No' }}</td>
-        </tr>
+                <tr>
+                    <td>Available</td>
 
-        <tr>
-            <td colspan="2">
-                <button
-                    (click)="onBuy()"
-                    class="buy-button"
-                >
-                    Buy
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                    <td>{{ isAvailable? 'Yes' : 'No' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="end">
+        <button
+            (click)="onBuy()"
+            [disabled]="!product.isAvailable"
+            mat-raised-button
+            color="primary"
+        >
+            Buy
+        </button>
+    </mat-card-actions>
+</mat-card>
