@@ -1,12 +1,10 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 import { CartService } from './../../services/cart.service';
-import {
-  IProduct,
-  IUniqProduct
-} from './../../../products/models/product.model';
-import { Observable, from } from 'rxjs';
-import { switchMap, reduce, flatMap, tap, scan } from 'rxjs/operators';
+import { IUniqProduct } from './../../../products/models/product.model';
+import { Observable } from 'rxjs';
+import { CartListComponent } from '../cart-list/cart-list.component';
 
 @Component({
   selector: 'app-cart',
@@ -18,14 +16,15 @@ export class CartComponent implements OnInit {
   public totalSum$: Observable<number>;
   public count$: Observable<number>;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private matDialog: MatDialog) {}
 
   ngOnInit() {
     this.uniqProducts$ = this.cartService.products$;
     this.totalSum$ = this.cartService.getTotalSum();
     this.count$ = this.cartService.getTotalCount();
-    // this.uniqProducts$.subscribe(product => console.log(product));
+  }
 
-    this.totalSum$.subscribe((val: number) => console.log(val));
+  onOpenCart() {
+    this.matDialog.open(CartListComponent);
   }
 }

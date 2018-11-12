@@ -3,6 +3,8 @@ import { EventEmitter } from '@angular/core';
 
 import { ProductCategory, IProduct } from './../../models/product.model';
 
+const DEFAULT_PHOTO = '/assets/images/placeholder.png';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -21,12 +23,14 @@ export class ProductComponent implements OnInit {
   public displayedCategory: string;
   public isAvailable: boolean;
   public features?: string[];
+  public photo: string;
 
   constructor() {}
 
   ngOnInit() {
     Object.assign(this, this.product);
     this.displayedCategory = ProductCategory[this.product.category];
+    this.photo = this.product.photo || DEFAULT_PHOTO;
   }
 
   onBuy() {

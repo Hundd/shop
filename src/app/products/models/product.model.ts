@@ -5,6 +5,7 @@ export interface IProduct {
   category: ProductCategory;
   isAvailable: boolean;
   id: string;
+  photo?: string;
 }
 
 export interface IUniqProduct {

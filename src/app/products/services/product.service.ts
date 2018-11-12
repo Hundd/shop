@@ -50,6 +50,38 @@ export class ProductService {
         isAvailable: false,
         photo:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Ibm_pc_5150.jpg/220px-Ibm_pc_5150.jpg'
+      },
+      {
+        id: Math.round(Math.random() * 1000).toString(),
+        name: 'Lorem ipsum product',
+        description: 'Lorem ipsum product',
+        price: 99,
+        category: ProductCategory.Desktop,
+        isAvailable: true
+      },
+      {
+        id: Math.round(Math.random() * 1000).toString(),
+        name: 'Lorem ipsum product 1',
+        description: 'Lorem ipsum product 1',
+        price: 59,
+        category: ProductCategory.Desktop,
+        isAvailable: true
+      },
+      {
+        id: Math.round(Math.random() * 1000).toString(),
+        name: 'Lorem ipsum product 2',
+        description: 'Lorem ipsum product 2',
+        price: 19,
+        category: ProductCategory.Desktop,
+        isAvailable: true
+      },
+      {
+        id: Math.round(Math.random() * 1000).toString(),
+        name: 'Lorem ipsum product 3',
+        description: 'Lorem ipsum product 3',
+        price: 19,
+        category: ProductCategory.Desktop,
+        isAvailable: true
       }
     ]);
   }
