@@ -1,3 +1,40 @@
-<p>
-  cart-list works!
-</p>
+<div class="cart-list">
+    <h1 mat-dialog-title>
+        {{ totalCount$ | async }} product(s) in your Cart
+    </h1>
+    <div mat-dialog-content>
+        <mat-list role="list">
+            <mat-list-item *ngFor="let product of products$ | async; trackBy: trackByFn">
+                <app-cart-item
+                    [product]="product"
+                    (change-quantity)="onProductChange($event)"
+                    (delete)="onProductDelete($event)"
+                ></app-cart-item>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+        <div
+            fxLayout="row"
+            fxLayoutAlign="space-between"
+            class="cart-list__total-price"
+        >
+            <strong>Total Price:</strong>
+            <strong>{{ totalSum$ | async | currency }}</strong>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div
+        mat-dialog-actions
+        fxLayout="row"
+        fxLayoutAlign="end end"
+    >
+        <button
+            mat-button
+            color="primary"
+            mat-dialog-close
+        >
+            Ok
+        </button>
+    </div>
+</div>

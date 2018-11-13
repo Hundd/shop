@@ -1,3 +1,46 @@
-<p>
-  cart-item works!
-</p>
+<div
+    matTooltip="Scroll on this line to change quantity"
+    fxFlex="1 0 auto"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="40px"
+    class="cart_item"
+>
+    <button
+        (click)="onDelete()"
+        mat-icon-button
+        color="accent"
+    >
+        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+    </button>
+
+    <div fxFlex="1 1 60%">{{ product.name }}</div>
+
+    <div
+        fxFlex="1 0 20%"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+    >
+        Quantity:
+        <mat-form-field class="cart_item__input">
+            <input
+                [(ngModel)]="product.quantity"
+                #quantityInput
+                matInput
+                type="number"
+                min="1"
+            >
+        </mat-form-field>
+    </div>
+
+    <div
+        fxFlex="1 1 20%"
+        fxLayout="row"
+        fxLayoutAlign="space-between"
+    >
+        <span>Price:</span>
+        <span>
+            {{ product.quantity * product.price | currency }}
+        </span>
+    </div>
+</div>

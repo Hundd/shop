@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { flatMap, reduce, map } from 'rxjs/operators';
 
 import { IProduct, IUniqProduct } from './../../products/models/product.model';
@@ -13,15 +13,7 @@ export class CartService {
 
   public products$ = this.products.asObservable();
 
-  getUniqProducts(): IUniqProduct[] {
-    const uniqMap = new Map<IProduct>();
-
-    return Array.from(this.productsMap).map(
-      ([productId, product]: [string, IUniqProduct]) => product
-    );
-  }
-
-  getTotalSum() {
+  getTotalSum(): Observable<number> {
     return this.products$.pipe(
       map(products =>
         products.reduce(
@@ -33,7 +25,7 @@ export class CartService {
     );
   }
 
-  getTotalCount() {
+  getTotalCount(): Observable<number> {
     return this.products$.pipe(
       map(products =>
         products.reduce(
@@ -62,5 +54,24 @@ export class CartService {
     }
 
     this.products.next(this.getUniqProducts());
+  }
+
+  changeQuantity(product: IUniqProduct) {
+    this.productsMap.set(product.id, {
+      ...this.productsMap.get(product.id),
+      quantity: product.quantity
+    });
+    this.products.next(this.getUniqProducts());
+  }
+
+  deleteProduct(product: IUniqProduct) {
+    this.productsMap.delete(product.id);
+    this.products.next(this.getUniqProducts());
+  }
+
+  private getUniqProducts(): IUniqProduct[] {
+    return Array.from(this.productsMap).map(
+      ([_, product]: [string, IUniqProduct]) => product
+    );
   }
 }

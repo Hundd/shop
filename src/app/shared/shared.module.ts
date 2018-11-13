@@ -1,10 +1,12 @@
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MaterialModule],
-  exports: [MaterialModule]
+  imports: [CommonModule, MaterialModule, FlexLayoutModule, FormsModule],
+  exports: [CommonModule, MaterialModule, FlexLayoutModule, FormsModule]
 })
 export class SharedModule {}

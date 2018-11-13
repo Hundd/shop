@@ -1,0 +1,9 @@
+:host /deep/ .mat-list-item-content {
+  padding: 0!important;
+}
+
+.cart-list {
+    &__total-price {
+        margin: 48px 0 20px;
+    }
+}

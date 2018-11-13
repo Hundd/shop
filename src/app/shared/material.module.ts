@@ -5,7 +5,12 @@ import {
   MatButtonModule,
   MatIconModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatDividerModule,
+  MatTooltipModule
 } from '@angular/material';
 
 const materialModules = [
@@ -13,7 +18,12 @@ const materialModules = [
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatDividerModule,
+  MatTooltipModule
 ];
 
 @NgModule({

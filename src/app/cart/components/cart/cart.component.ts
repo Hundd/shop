@@ -25,6 +25,6 @@ export class CartComponent implements OnInit {
   }
 
   onOpenCart() {
-    this.matDialog.open(CartListComponent);
+    this.matDialog.open(CartListComponent, { width: ' 720px' });
   }
 }
