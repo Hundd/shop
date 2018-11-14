@@ -53,8 +53,21 @@
                 </tr>
             </tbody>
         </table>
+
+        <p [ngClass]="{'is-not-visible': !product.isInCart}">
+            Product is added to a Cart.
+        </p>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="end">
+        <button
+            (click)="onOpenCart()"
+            *ngIf="product.isInCart"
+            mat-raised-button
+            color="accent"
+        >
+            Open Cart
+        </button>
+
         <button
             (click)="onBuy()"
             [disabled]="!product.isAvailable"

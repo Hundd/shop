@@ -6,6 +6,7 @@ export interface IProduct {
   isAvailable: boolean;
   id: string;
   photo?: string;
+  isInCart?: boolean;
 }
 
 export interface IUniqProduct {
@@ -13,6 +14,7 @@ export interface IUniqProduct {
   name: string;
   quantity: number;
   price: number;
+  product: IProduct;
 }
 
 export class Product implements IProduct {

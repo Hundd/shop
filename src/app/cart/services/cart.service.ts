@@ -50,6 +50,7 @@ export class CartService {
       });
     } else {
       this.productsMap.set(product.id, {
+        product,
         name: product.name,
         id: product.id,
         price: product.price,
@@ -69,6 +70,9 @@ export class CartService {
   }
 
   deleteProduct(product: IUniqProduct) {
+    //Make product un
+    this.productsMap.get(product.id).product.isInCart = false;
+
     this.productsMap.delete(product.id);
     this.products.next(this.getUniqProducts());
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 import { ProductCategory, IProduct } from './../../models/product.model';
+import { CartService } from 'src/app/cart/services/cart.service';
 
 const DEFAULT_PHOTO = '/assets/images/placeholder.png';
 
@@ -24,8 +25,9 @@ export class ProductComponent implements OnInit {
   public isAvailable: boolean;
   public features?: string[];
   public photo: string;
+  public isInCart: boolean;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {
     Object.assign(this, this.product);
@@ -34,6 +36,12 @@ export class ProductComponent implements OnInit {
   }
 
   onBuy() {
+    this.product.isInCart = true;
+
     this.buy.emit(this.product);
+  }
+
+  onOpenCart() {
+    this.cartService.openCart();
   }
 }

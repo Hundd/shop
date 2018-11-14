@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  AfterViewInit
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
@@ -19,7 +20,7 @@ import { IUniqProduct } from 'src/app/products/models/product.model';
   styleUrls: ['./cart-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartListComponent implements OnInit, OnDestroy {
+export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
   products$: Observable<IUniqProduct[]>;
   totalSum$: Observable<number>;
   totalCount$: Observable<number>;
@@ -35,6 +36,9 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.products$ = this.cartService.products$;
     this.totalSum$ = this.cartService.getTotalSum();
     this.totalCount$ = this.cartService.getTotalCount();
+  }
+
+  ngAfterViewInit() {
     this.countSubscription = this.totalCount$.subscribe(count => {
       if (count <= 0) {
         // Close popup if there is no items
