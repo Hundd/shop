@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { CartService } from './../../services/cart.service';
 import { IUniqProduct } from './../../../products/models/product.model';
+import { CartPopupService } from '../../services/cart-popup.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,10 @@ export class CartComponent implements OnInit {
   public totalSum$: Observable<number>;
   public count$: Observable<number>;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private cartPopupService: CartPopupService
+  ) {}
 
   ngOnInit() {
     this.uniqProducts$ = this.cartService.products$;
@@ -24,6 +28,6 @@ export class CartComponent implements OnInit {
   }
 
   onOpenCart() {
-    this.cartService.openCart();
+    this.cartPopupService.openCart();
   }
 }

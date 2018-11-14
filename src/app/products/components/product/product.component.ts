@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 import { ProductCategory, IProduct } from './../../models/product.model';
-import { CartService } from 'src/app/cart/services/cart.service';
+import { CartPopupService } from 'src/app/cart/services/cart-popup.service';
 
 const DEFAULT_PHOTO = '/assets/images/placeholder.png';
 
@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
   public photo: string;
   public isInCart: boolean;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartPopupService: CartPopupService) {}
 
   ngOnInit() {
     Object.assign(this, this.product);
@@ -42,6 +42,6 @@ export class ProductComponent implements OnInit {
   }
 
   onOpenCart() {
-    this.cartService.openCart();
+    this.cartPopupService.openCart();
   }
 }

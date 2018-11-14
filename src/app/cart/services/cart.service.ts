@@ -3,8 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProduct, IUniqProduct } from './../../products/models/product.model';
-import { CartListComponent } from '../components/cart-list/cart-list.component';
-import { MatDialog } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,7 @@ export class CartService {
 
   public products$ = this.products.asObservable();
 
-  constructor(private matDialog: MatDialog) {}
+  constructor() {}
 
   getTotalSum(): Observable<number> {
     return this.products$.pipe(
@@ -75,10 +73,6 @@ export class CartService {
 
     this.productsMap.delete(product.id);
     this.products.next(this.getUniqProducts());
-  }
-
-  openCart() {
-    this.matDialog.open(CartListComponent, { width: ' 720px' });
   }
 
   private getUniqProducts(): IUniqProduct[] {
