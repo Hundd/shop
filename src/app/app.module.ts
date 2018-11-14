@@ -6,22 +6,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './products/components/product/product.component';
-import { CartComponent } from './cart/components/cart/cart.component';
-import { ProductListComponent } from './products/components/product-list/product-list.component';
+import { ProductsModule } from './products/products.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductComponent,
-    CartComponent,
-    ProductListComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CartModule,
     CoreModule,
+    ProductsModule,
     SharedModule
   ],
   providers: [],
