@@ -3,7 +3,15 @@
 }
 
 .cart-list {
+    position: relative;
+
     &__total-price {
         margin: 48px 0 20px;
+    }
+
+    &__close-button {
+        position: absolute;
+        top: -20px;
+        right: -20px;
     }
 }

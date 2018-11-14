@@ -5,9 +5,11 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+
+import { Subscription, Observable } from 'rxjs';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CartService } from '../../services/cart.service';
-import { Subscription, Observable } from 'rxjs';
 import { IUniqProduct } from 'src/app/products/models/product.model';
 
 @Component({

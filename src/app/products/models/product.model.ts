@@ -15,12 +15,16 @@ export interface IUniqProduct {
   price: number;
 }
 
-export class IProduct implements IProduct {
-  name: string;
-  description: string;
-  price: number;
-  category: ProductCategory;
-  isAvailable: boolean;
+export class Product implements IProduct {
+  constructor(
+    public name: string,
+    public description: string,
+    public price: number,
+    public category: ProductCategory,
+    public isAvailable: boolean,
+    public id: string,
+    public photo?: string
+  ) {}
 }
 
 export enum ProductCategory {

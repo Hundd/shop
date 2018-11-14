@@ -1,7 +1,7 @@
-import { CartService } from './../../../cart/services/cart.service';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from './../../services/product.service';
+import { CartService } from './../../../cart/services/cart.service';
 import { IProduct } from '../../models/product.model';
 
 @Component({

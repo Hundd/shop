@@ -11,9 +11,12 @@ import {
   OnDestroy
 } from '@angular/core';
 
-import { IUniqProduct } from 'src/app/products/models/product.model';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+
+import { IUniqProduct } from 'src/app/products/models/product.model';
+
+const MAX_PRODUCTS_IN_CART = 999;
 
 @Component({
   selector: 'app-cart-item',
@@ -32,16 +35,16 @@ export class CartItemComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent) {
-    if (event.deltaY < 0) {
+    if (event.deltaY < 0 && this.product.quantity < MAX_PRODUCTS_IN_CART) {
       this.product.quantity += 1;
       this.change.emit(this.product);
 
       return;
-    } else if (this.product.quantity > 1) {
+    }
+
+    if (event.deltaY > 0 && this.product.quantity > 1) {
       this.product.quantity -= 1;
       this.change.emit(this.product);
-
-      return;
     }
   }
 
@@ -60,15 +63,23 @@ export class CartItemComponent implements AfterViewInit, OnDestroy {
     this.inputSubscription.unsubscribe();
   }
 
+  onDelete() {
+    this.delete.next(this.product);
+  }
+
   quantityChange() {
     if (this.product.quantity < 1) {
       this.product.quantity = 1;
+
       return;
     }
-    this.change.emit(this.product);
-  }
 
-  onDelete() {
-    this.delete.next(this.product);
+    if (this.product.quantity > MAX_PRODUCTS_IN_CART) {
+      this.product.quantity = MAX_PRODUCTS_IN_CART;
+
+      return;
+    }
+
+    this.change.emit(this.product);
   }
 }

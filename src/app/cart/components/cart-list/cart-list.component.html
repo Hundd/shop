@@ -2,6 +2,16 @@
     <h1 mat-dialog-title>
         {{ totalCount$ | async }} product(s) in your Cart
     </h1>
+
+    <button
+        (click)="onClose()"
+        mat-icon-button
+        color="accent"
+        class="cart-list__close-button"
+    >
+        <mat-icon aria-label="Close Popup">close</mat-icon>
+    </button>
+
     <div mat-dialog-content>
         <mat-list role="list">
             <mat-list-item *ngFor="let product of products$ | async; trackBy: trackByFn">
@@ -13,6 +23,7 @@
                 <mat-divider></mat-divider>
             </mat-list-item>
         </mat-list>
+
         <div
             fxLayout="row"
             fxLayoutAlign="space-between"
@@ -30,11 +41,12 @@
         fxLayoutAlign="end end"
     >
         <button
-            mat-button
+            mat-stroked-button
             color="primary"
             mat-dialog-close
+            cdkFocusInitial
         >
-            Ok
+            Proceed purchase
         </button>
     </div>
 </div>

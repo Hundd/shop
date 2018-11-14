@@ -1,5 +1,6 @@
 <div
     matTooltip="Scroll on this line to change quantity"
+    appHovered="#eef"
     fxFlex="1 0 auto"
     fxLayout="row"
     fxLayoutAlign="space-between center"
@@ -11,7 +12,7 @@
         mat-icon-button
         color="accent"
     >
-        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+        <mat-icon aria-label="Remove good from cart">delete</mat-icon>
     </button>
 
     <div fxFlex="1 1 60%">{{ product.name }}</div>
@@ -22,7 +23,10 @@
         fxLayoutAlign="space-between center"
     >
         Quantity:
-        <mat-form-field class="cart_item__input">
+        <mat-form-field
+            class="cart_item__input"
+            [ngStyle]="{'margin-bottom': '-22px', position: 'relative', top: '-8px'}"
+        >
             <input
                 [(ngModel)]="product.quantity"
                 #quantityInput
