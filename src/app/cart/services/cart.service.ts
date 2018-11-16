@@ -75,6 +75,11 @@ export class CartService {
     this.products.next(this.getUniqProducts());
   }
 
+  clearCart() {
+    this.productsMap.clear();
+    this.products.next(this.getUniqProducts());
+  }
+
   private getUniqProducts(): IUniqProduct[] {
     return Array.from(this.productsMap).map(
       ([_, product]: [string, IUniqProduct]) => product
