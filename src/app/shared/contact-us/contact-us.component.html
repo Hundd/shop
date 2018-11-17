@@ -1,3 +1,19 @@
+<h4>About us</h4>
 <p>
-  contact-us works!
+    Application:
+    <strong>{{ constant.App }}</strong>
+    : Version:
+    <strong>{{ constant.Ver }}</strong>
 </p>
+
+<p>Bunch of random strings:</p>
+<ul>
+    <li
+        *ngFor="let token of tokens; index as i"
+        [ngStyle]="{fontFamily: 'monospace', lineHeight: 1.5}"
+        click-n-mark
+        [textAfter]="i"
+    >
+        {{ token }}
+    </li>
+</ul>

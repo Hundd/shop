@@ -2,9 +2,13 @@ import { InjectionToken } from '@angular/core';
 
 export const GeneratorService = new InjectionToken<string>('GeneratorService');
 
+export interface TokenGenerator {
+  generateToken: () => string;
+}
+
 export function GeneratorFactory(length: number) {
-  return function() {
-    return randomString(length);
+  return function(): TokenGenerator {
+    return { generateToken: () => randomString(length) };
   };
 }
 
