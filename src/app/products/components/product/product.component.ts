@@ -26,6 +26,7 @@ export class ProductComponent implements OnInit {
   public features?: string[];
   public photo: string;
   public isInCart: boolean;
+  public checked: number;
 
   constructor(private cartPopupService: CartPopupService) {}
 
@@ -33,6 +34,7 @@ export class ProductComponent implements OnInit {
     Object.assign(this, this.product);
     this.displayedCategory = ProductCategory[this.product.category];
     this.photo = this.product.photo || DEFAULT_PHOTO;
+    this.checked = Date.now();
   }
 
   onBuy() {

@@ -14,7 +14,7 @@
 
     <div mat-dialog-content>
         <mat-list role="list">
-            <mat-list-item *ngFor="let product of products$ | async; trackBy: trackByFn">
+            <mat-list-item *ngFor="let product of products$ | async | orderBy : 'name' : 'true'; trackBy: trackByFn">
                 <app-cart-item
                     [product]="product"
                     (change-quantity)="onProductChange($event)"

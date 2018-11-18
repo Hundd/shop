@@ -37,13 +37,15 @@
                 <tr>
                     <td>Price</td>
 
-                    <td>{{ price | currency }}</td>
+                    <td>
+                        {{ price | currency : 'USD' : 'symbol' : '0.0-2' }}
+                    </td>
                 </tr>
 
                 <tr>
                     <td>Category</td>
 
-                    <td>{{ displayedCategory }}</td>
+                    <td>{{ displayedCategory | uppercase}}</td>
                 </tr>
 
                 <tr>
@@ -51,12 +53,16 @@
 
                     <td>{{ isAvailable? 'Yes' : 'No' }}</td>
                 </tr>
+
+                <tr>
+                    <td>Checked</td>
+
+                    <td>{{ checked | date : 'longDate'}}</td>
+                </tr>
             </tbody>
         </table>
 
-        <p [ngClass]="{'is-not-visible': !product.isInCart}">
-            Product is added to a Cart.
-        </p>
+        <p [ngClass]="{'is-not-visible': !product.isInCart}">Product is added to a Cart.</p>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="end">
         <button

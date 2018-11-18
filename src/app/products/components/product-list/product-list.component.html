@@ -1,6 +1,6 @@
 <ul class="product-list">
     <li
-        *ngFor="let product of products"
+        *ngFor="let product of products | async | orderBy : 'name' : 'true'"
         class="product-list__item"
         fxLayout="row"
         fxLayouAlign="center stretch"

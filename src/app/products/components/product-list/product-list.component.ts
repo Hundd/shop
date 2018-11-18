@@ -10,7 +10,7 @@ import { IProduct } from '../../models/product.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  public products: IProduct[];
+  public products: Promise<IProduct[]>;
 
   constructor(
     private productService: ProductService,
@@ -18,9 +18,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.productService
-      .getProducts()
-      .then(products => (this.products = products));
+    this.products = this.productService.getProducts();
   }
 
   onBuy(product: IProduct) {

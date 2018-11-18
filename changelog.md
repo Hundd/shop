@@ -27,3 +27,18 @@
 5. Add GeneratorService and register it as Factory
 6. Add app-contact-us component
 7. Add click-n-mark.directive, apply it to the list of random strings
+
+
+## Task 4
+
+1. - currencyPipe was used in product.component.html
+   - datePipe was used in product.component.html
+   - uppercasePipe was used in product.component.html
+
+2. - product-list.component.html - uses asyncPipe for displaying data
+   - getProducts() method already returns Promise
+
+3. implemented order-by.pipe.ts and registered in SharedModule
+
+4. - used orderByPipe in cart-list.component.html 
+   - used orderByPipe in product-list.component.html
