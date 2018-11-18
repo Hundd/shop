@@ -25,6 +25,14 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
   totalSum$: Observable<number>;
   totalCount$: Observable<number>;
 
+  fieldNames = [
+    { key: 'price', name: 'Price' },
+    { key: 'quantity', name: 'Quantity' },
+    { key: 'name', name: 'Name', ascending: true }
+  ];
+
+  ordering: { key; name; ascending? };
+
   private countSubscription: Subscription;
 
   constructor(

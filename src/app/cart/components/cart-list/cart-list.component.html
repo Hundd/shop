@@ -13,8 +13,26 @@
     </button>
 
     <div mat-dialog-content>
+
+        <mat-form-field
+            fxLayout="row"
+            fxLayoutAlign="end"
+        >
+            <mat-select
+                [(ngModel)]="ordering"
+                placeholder="Order By"
+            >
+                <mat-option
+                    *ngFor="let fieldName of fieldNames"
+                    [value]="fieldName"
+                >
+                    {{ fieldName.name | titlecase }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-list role="list">
-            <mat-list-item *ngFor="let product of products$ | async | orderBy : 'name' : 'true'; trackBy: trackByFn">
+            <mat-list-item *ngFor="let product of products$ | async | orderBy : ordering?.key : ordering?.ascending; trackBy: trackByFn">
                 <app-cart-item
                     [product]="product"
                     (change-quantity)="onProductChange($event)"

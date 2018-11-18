@@ -42,3 +42,4 @@
 
 4. - used orderByPipe in cart-list.component.html 
    - used orderByPipe in product-list.component.html
+   - add select element on cart-list.component.html and product-list.component.html
