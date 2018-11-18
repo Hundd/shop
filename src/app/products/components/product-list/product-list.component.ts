@@ -10,7 +10,15 @@ import { IProduct } from '../../models/product.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  public products: Promise<IProduct[]>;
+  products: Promise<IProduct[]>;
+
+  fieldNames = [
+    { key: 'name', name: 'Name' },
+    { key: 'price', name: 'Price' },
+    { key: 'isAvailable', name: 'Available' }
+  ];
+
+  ordering: string;
 
   constructor(
     private productService: ProductService,

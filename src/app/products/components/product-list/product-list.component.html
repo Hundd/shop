@@ -1,6 +1,29 @@
+<div
+    fxLayout="row"
+    fxLayoutAlign="end"
+    class="filter"
+>
+    <mat-form-field>
+        <mat-select
+            [(ngModel)]="ordering"
+            placeholder="Order By"
+        >
+            <mat-option
+                *ngFor="let fieldName of fieldNames"
+                [value]="fieldName.key"
+            >
+                {{ fieldName.name | titlecase }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div fxFlex="16px">
+        <!-- Spacer -->
+    </div>
+</div>
 <ul class="product-list">
     <li
-        *ngFor="let product of products | async | orderBy : 'name' : 'true'"
+        *ngFor="let product of products | async | orderBy : ordering : 'true'"
         class="product-list__item"
         fxLayout="row"
         fxLayouAlign="center stretch"
