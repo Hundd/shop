@@ -57,7 +57,16 @@
         mat-dialog-actions
         fxLayout="row"
         fxLayoutAlign="end end"
+        fxLayoutGap="10px"
     >
+        <button
+            (click)="onClearCart()"
+            mat-stroked-button
+            color="accent"
+        >
+            Clear cart
+        </button>
+
         <button
             mat-stroked-button
             color="primary"
