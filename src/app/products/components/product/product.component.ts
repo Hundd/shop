@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 import { ProductCategory, IProduct } from './../../models/product.model';
-import { CartPopupService } from 'src/app/cart/services/cart-popup.service';
 
 const DEFAULT_PHOTO = '/assets/images/placeholder.png';
 
@@ -18,20 +17,16 @@ export class ProductComponent implements OnInit {
   @Output()
   buy: EventEmitter<IProduct> = new EventEmitter();
 
-  public name: string;
-  public description: string;
-  public price: number;
+  @Output()
+  openCart: EventEmitter<void> = new EventEmitter();
+
   public displayedCategory: string;
-  public isAvailable: boolean;
-  public features?: string[];
   public photo: string;
-  public isInCart: boolean;
   public checked: number;
 
-  constructor(private cartPopupService: CartPopupService) {}
+  constructor() {}
 
   ngOnInit() {
-    Object.assign(this, this.product);
     this.displayedCategory = ProductCategory[this.product.category];
     this.photo = this.product.photo || DEFAULT_PHOTO;
     this.checked = Date.now();
@@ -44,6 +39,6 @@ export class ProductComponent implements OnInit {
   }
 
   onOpenCart() {
-    this.cartPopupService.openCart();
+    this.openCart.emit();
   }
 }
