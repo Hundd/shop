@@ -62,6 +62,10 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.cartService.deleteProduct(product);
   }
 
+  onClearCart() {
+    this.cartService.clearCart();
+  }
+
   trackByFn(_, item) {
     return item.id;
   }

@@ -68,7 +68,7 @@ export class CartService {
   }
 
   deleteProduct(product: IUniqProduct) {
-    //Make product un
+    //Make product not in cart
     this.productsMap.get(product.id).product.isInCart = false;
 
     this.productsMap.delete(product.id);
@@ -76,6 +76,11 @@ export class CartService {
   }
 
   clearCart() {
+    //Make all products not in cart
+    this.productsMap.forEach(
+      productItem => (productItem.product.isInCart = false)
+    );
+
     this.productsMap.clear();
     this.products.next(this.getUniqProducts());
   }
