@@ -1,0 +1,22 @@
+<h2>Details:</h2>
+<app-product
+    *ngIf="product"
+    [product]="product"
+    (buy)="onBuy($event)"
+    (openCart)="onOpenCart()"
+></app-product>
+
+<div
+    fxLayout="column"
+    class="comments"
+>
+    <a
+        routerLink="./comments"
+        fxFlex="1"
+        mat-button
+        color="accent"
+    >
+        Show Comments
+    </a>
+    <router-outlet></router-outlet>
+</div>

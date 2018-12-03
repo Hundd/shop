@@ -1,0 +1,17 @@
+<mat-list>
+    <mat-list-item *ngFor="let comment of comments">
+        <figure
+            fxLayout="row"
+            fxLayoutGap="30px"
+        >
+            <img
+                [src]="comment.avatar"
+                fxFlex="0 0 auto"
+            >
+            <figcaption>
+                <h3>{{comment.author}}</h3>
+                <p>{{comment.comment}}</p>
+            </figcaption>
+        </figure>
+    </mat-list-item>
+</mat-list>

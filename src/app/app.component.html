@@ -4,7 +4,12 @@
     fxLayout
     fxLayoutAlign="space-between center"
 >
-    <h1 #appTitle></h1>
+    <a
+        routerLink="/"
+        class="toolbar-link"
+    >
+        <h1 #appTitle></h1>
+    </a>
 
     <div
         fxLayout
@@ -19,6 +24,8 @@
     </div>
 </mat-toolbar>
 
-<app-product-list></app-product-list>
+<router-outlet></router-outlet>
 
-<app-contact-us></app-contact-us>
+<!-- <app-product-list></app-product-list> -->
+
+<!-- <app-contact-us></app-contact-us> -->

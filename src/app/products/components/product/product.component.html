@@ -65,6 +65,13 @@
         <p [ngClass]="{'is-not-visible': !product.isInCart}">Product is added to a Cart.</p>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="end">
+        <a
+            mat-button
+            color="primary"
+            [routerLink]="'/product-details/' + product.id"
+        >
+            More
+        </a>
         <button
             (click)="onOpenCart()"
             *ngIf="product.isInCart"

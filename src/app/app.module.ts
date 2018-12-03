@@ -1,3 +1,4 @@
+import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,13 +13,14 @@ import { CartModule } from './cart/cart.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     CartModule,
     CoreModule,
     ProductsModule,
-    SharedModule
+    SharedModule,
+    PagesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
