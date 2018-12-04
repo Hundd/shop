@@ -1,11 +1,10 @@
+import { AdminRoutingModule } from './admin-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 
 @NgModule({
   declarations: [AdminComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, AdminRoutingModule]
 })
-export class AdminModule { }
+export class AdminModule {}

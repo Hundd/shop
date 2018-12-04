@@ -1,31 +1,60 @@
-<mat-toolbar
-    color="primary"
-    class="mat-elevation-z2"
-    fxLayout
-    fxLayoutAlign="space-between center"
->
-    <a
-        routerLink="/"
-        class="toolbar-link"
+<mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer
+        #drawer
+        mode="over"
     >
-        <h1 #appTitle></h1>
-    </a>
+        <mat-nav-list (click)="drawer.toggle()">
+            <a
+                mat-list-item
+                routerLink="/login"
+            >
+                Login
+            </a>
 
-    <div
-        fxLayout
-        fxLayoutAlign="end center"
-        fxLayoutGap="10px"
-    >
-        <app-cart *ngIf="cartIsNotEmpty$ | async; else emptyCartBlock"></app-cart>
+            <a
+                mat-list-item
+                routerLink="/admin"
+            >
+                Admin
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar
+            color="primary"
+            class="mat-elevation-z2"
+            fxLayout
+            fxLayoutAlign="space-between center"
+        >
+            <button
+                mat-icon-button
+                (click)="drawer.toggle()"
+            >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a
+                routerLink="/"
+                class="toolbar-link"
+            >
+                <h1 #appTitle></h1>
+            </a>
 
-        <ng-template #emptyCartBlock>
-            <p>Your cart is empty</p>
-        </ng-template>
-    </div>
-</mat-toolbar>
+            <div
+                fxLayout
+                fxLayoutAlign="end center"
+                fxLayoutGap="10px"
+            >
+                <app-cart *ngIf="cartIsNotEmpty$ | async; else emptyCartBlock"></app-cart>
 
-<router-outlet></router-outlet>
+                <ng-template #emptyCartBlock>
+                    <p>Your cart is empty</p>
+                </ng-template>
+            </div>
+        </mat-toolbar>
 
-<!-- <app-product-list></app-product-list> -->
+        <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+</mat-drawer-container>
 
 <!-- <app-contact-us></app-contact-us> -->

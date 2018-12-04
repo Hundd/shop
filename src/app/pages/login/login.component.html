@@ -1,0 +1,13 @@
+<div
+    [ngStyle]="{height: '100%'}"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+>
+    <mat-slide-toggle
+        [checked]="isLogin()"
+        (change)="onChange($event)"
+    >
+        Login
+    </mat-slide-toggle>
+
+</div>
