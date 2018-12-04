@@ -6,11 +6,10 @@ const loginKey = 'login';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService implements OnInit {
+export class LoginService {
   private _login: boolean;
 
-  constructor(private localStorageService: LocalStorageService) {}
-  ngOnInit() {
+  constructor(private localStorageService: LocalStorageService) {
     this._login = Boolean(this.localStorageService.getItem(loginKey));
   }
 
