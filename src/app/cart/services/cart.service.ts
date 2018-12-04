@@ -38,7 +38,7 @@ export class CartService {
     );
   }
 
-  addProduct(product: IProduct) {
+  addProduct(product: IProduct, quantity: number = 1) {
     if (this.productsMap.has(product.id)) {
       const currentProduct = this.productsMap.get(product.id);
 
@@ -52,7 +52,7 @@ export class CartService {
         name: product.name,
         id: product.id,
         price: product.price,
-        quantity: 1
+        quantity
       });
     }
 

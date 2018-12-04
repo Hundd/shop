@@ -1,3 +1,4 @@
+import { Router, Params } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -8,6 +9,7 @@ import {
 import { MatDialogRef } from '@angular/material';
 
 import { Subscription, Observable } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CartService } from '../../services/cart.service';
@@ -37,7 +39,8 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     public dialogRef: MatDialogRef<CartListComponent>,
-    public cartService: CartService
+    public cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -72,6 +75,25 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onClearCart() {
     this.cartService.clearCart();
+  }
+
+  onProceedPurchase() {
+    this.products$
+      .pipe(
+        take(1),
+        map((products: IUniqProduct[]) =>
+          products.reduce(
+            (acc, { id, quantity }) => ((acc[id] = quantity), acc),
+            {}
+          )
+        )
+      )
+      .subscribe(params => {
+        console.log(params);
+        this.router
+          .navigate(['/confirm-order'], { queryParams: params })
+          .then(() => this.onClose());
+      });
   }
 
   trackByFn(_, item) {

@@ -1,0 +1,97 @@
+<h2 fxLayoutAlign="center">Confirm Order</h2>
+<div
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px"
+>
+    <div
+        *ngIf="products$ | async as products"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+        fxLayoutGap="30px"
+    >
+        <mat-card>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let product of products">
+                    <app-cart-item
+                        [product]="product"
+                        (change-quantity)="onProductChange($event)"
+                        (delete)="onProductDelete($event)"
+                    ></app-cart-item>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+
+            <div
+                fxLayout="row"
+                fxLayoutAlign="end"
+                class="total-price__wrapper"
+            >
+                <span>
+                    <strong>Total Price:</strong>
+                    <strong class="total-price">{{ calcTotalSum(products) | currency}}</strong>
+                </span>
+
+            </div>
+        </mat-card>
+    </div>
+
+    <div fxLayoutAlign="center">
+        <mat-card>
+            <form
+                fxLayout="column"
+                class="form"
+            >
+                <mat-form-field>
+                    <input
+                        type="text"
+                        name="name"
+                        matInput
+                        placeholder="Name"
+                    >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                        type="email"
+                        name="email"
+                        matInput
+                        placeholder="Email"
+                    >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                        type="tel"
+                        name="tel"
+                        matInput
+                        placeholder="Telephone"
+                    >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <textarea
+                        matInput
+                        placeholder="Delivery Address"
+                    ></textarea>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <textarea
+                        matInput
+                        placeholder="Leave a comment"
+                    ></textarea>
+                </mat-form-field>
+            </form>
+            <mat-card-actions align="end">
+                <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                >
+                    Confirm
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
