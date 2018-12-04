@@ -1,0 +1,57 @@
+<h3 align="center">Create new Product</h3>
+<div
+    fxLayout="row"
+    fxLayoutAlign="center"
+    [ngStyle]="{height: '100%'}"
+>
+    <mat-card [ngStyle]="{'min-width': '512px'}">
+        <form
+            fxLayout="column"
+            fxLayoutGap="10px"
+        >
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="Name"
+                >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <textarea
+                    matInput
+                    placeholder="Description"
+                ></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    type="number"
+                    placeholder="Price"
+                    value="0"
+                >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Category">
+                    <mat-option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                    >
+                        {{category}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+            <mat-checkbox>Available</mat-checkbox>
+        </form>
+
+        <mat-card-actions align="right">
+            <button
+                mat-raised-button
+                color="primary"
+            >
+                Save
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
