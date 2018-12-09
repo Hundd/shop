@@ -1,15 +1,17 @@
-import { PagesModule } from './pages/pages.module';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { TimeTrackInterceptor } from '@core/time-track.interceptor';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { ProductsModule } from './products/products.module';
+import { AppRoutingModule } from './app-routing.module';
 import { CartModule } from './cart/cart.module';
-import { HttpClientModule } from '@angular/common/http';
+import { PagesModule } from './pages/pages.module';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
     PagesModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TimeTrackInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

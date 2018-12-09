@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 
 import { Product, IProduct } from '@models/product.model';
 import { CartPopupService } from './../../../cart/services/cart-popup.service';
@@ -36,7 +36,10 @@ export class ProductDetailsComponent implements OnInit {
         product => {
           this.product = product;
         },
-        err => console.log(err)
+        err => {
+          console.error(err);
+          this.router.navigate(['/path-not-found']);
+        }
       );
   }
 

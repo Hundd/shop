@@ -44,6 +44,7 @@
    - used orderByPipe in product-list.component.html
    - add select element on cart-list.component.html and product-list.component.html
 
+
 ## Task 5
 
 1. - already done 'product-list'
@@ -69,8 +70,14 @@
 
 
 ## Task 6
+
 1. - added json-server
+
 2. - created api.service to hold urls
+
 3. - product.service updated to handle api requests
    - getProducts returns Promise
    - getProductById returns Observable
+
+4. - add time-track.interceptor
+   - it handles only GET request to /products endpoint
