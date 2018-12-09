@@ -81,3 +81,5 @@
 
 4. - add time-track.interceptor
    - it handles only GET request to /products endpoint
+
+5. - add app.settings service and assets/settings.json file

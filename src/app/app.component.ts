@@ -2,7 +2,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { AppSettingsService } from '@core/app-settings.service';
 import { CartService } from './cart/services/cart.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,10 +14,15 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('appTitle') title: ElementRef;
   public cartIsNotEmpty$: Observable<boolean>;
 
-  constructor(private cartService: CartService) {
-    this.cartIsNotEmpty$ = cartService.products$.pipe(
+  constructor(
+    private cartService: CartService,
+    private settings: AppSettingsService
+  ) {
+    this.cartIsNotEmpty$ = this.cartService.products$.pipe(
       map(products => !!(products && products.length))
     );
+
+    this.settings.init();
   }
 
   ngAfterViewInit() {

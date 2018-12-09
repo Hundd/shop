@@ -14,7 +14,9 @@ export class ConfigOptionsService {
     this.localStorageService.setItem(CONFIG_KEY, JSON.stringify(config));
   }
 
-  loadConfig(): Object {
-    return JSON.parse(this.localStorageService.getItem(CONFIG_KEY));
+  loadConfig(): Object | null {
+    const config = this.localStorageService.getItem(CONFIG_KEY);
+
+    return config && JSON.parse(config);
   }
 }
