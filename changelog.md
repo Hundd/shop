@@ -72,3 +72,5 @@
 1. - added json-server
 2. - created api.service to hold urls
 3. - product.service updated to handle api requests
+   - getProducts returns Promise
+   - getProductById returns Observable

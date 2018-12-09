@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProductCategory, IProduct } from '@models/product.model';
 import { ApiService } from '@core/api.service';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,16 @@ export class ProductService {
   getProducts(): Promise<Array<IProduct>> {
     return this.http
       .get(this.api.products)
-      .toPromise()
-      .then((products: any[]) =>
-        products.map(product => buildProduct(product))
-      );
+      .pipe(
+        map((products: any[]) => products.map(product => buildProduct(product)))
+      )
+      .toPromise();
   }
 
-  getProductById(id: string): Promise<IProduct | null> {
+  getProductById(id: string): Observable<IProduct | null> {
     return this.http
       .get(this.api.product(id))
-      .pipe(map(product => buildProduct(product)))
-      .toPromise();
+      .pipe(map(product => buildProduct(product)));
   }
 }
 
