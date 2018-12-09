@@ -1,4 +1,4 @@
-import { Comment } from './../../models/comment.model';
+import { Comment } from '@models/comment.model';
 import { CommentsService } from './../../services/comments.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute, Params } from '@angular/router';

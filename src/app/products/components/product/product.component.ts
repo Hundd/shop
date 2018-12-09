@@ -1,7 +1,9 @@
+import { ProductCategory } from '@models/product.model';
+import { IProduct } from '@models/product.model';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
-import { ProductCategory, IProduct } from './../../models/product.model';
+// import { ProductCategory, IProduct } from '@models';
 
 const DEFAULT_PHOTO = '/assets/images/placeholder.png';
 

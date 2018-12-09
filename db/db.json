@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "id": "0",
+      "name": "Motorola DynaTAC",
+      "description": "Commercial portable cellular phone",
+      "price": 1299,
+      "category": "SmartPhone",
+      "isAvailable": true,
+      "photo": "/assets/images/phone.jpg"
+    },
+    {
+      "id": "1",
+      "name": "Nokia N800",
+      "description": "Tablet with no support for GSM voice communication, SMS, and MMS.",
+      "price": 1999,
+      "category": "Tablet",
+      "isAvailable": true,
+      "photo": "/assets/images/tablet.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Toughbook CF-29",
+      "description": "Toughbook is a trademarked brand name owned by Panasonic Corporation and refers to its line of rugged computers",
+      "price": 2499,
+      "category": "Laptop",
+      "isAvailable": false,
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Panasonic_cf-29.jpg/300px-Panasonic_cf-29.jpg"
+    },
+    {
+      "id": "3",
+      "name": "IBM 5150",
+      "description": "The IBM Personal Computer, commonly known as the IBM PC, is the original version and progenitor of the           IBM PC compatible hardware platform.",
+      "price": 399,
+      "category": "Desktop",
+      "isAvailable": false,
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Ibm_pc_5150.jpg/220px-Ibm_pc_5150.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Lorem ipsum product",
+      "description": "Lorem ipsum product",
+      "price": 99,
+      "category": "Desktop",
+      "isAvailable": true
+    },
+    {
+      "id": "5",
+      "name": "Lorem ipsum product 1",
+      "description": "Lorem ipsum product 1",
+      "price": 59,
+      "category": "Desktop",
+      "isAvailable": true
+    },
+    {
+      "id": "6",
+      "name": "Lorem ipsum product 2",
+      "description": "Lorem ipsum product 2",
+      "price": 19,
+      "category": "Desktop",
+      "isAvailable": true
+    },
+    {
+      "id": "7",
+      "name": "Lorem ipsum product 3",
+      "description": "Lorem ipsum product 3",
+      "price": 19,
+      "category": "Desktop",
+      "isAvailable": true
+    }
+  ]
+}

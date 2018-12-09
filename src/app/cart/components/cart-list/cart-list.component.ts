@@ -11,9 +11,10 @@ import { MatDialogRef } from '@angular/material';
 import { Subscription, Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
+import { IUniqProduct } from '@models/product.model';
+
 import { CartService } from '../../services/cart.service';
-import { IUniqProduct } from 'src/app/products/models/product.model';
 
 @Component({
   providers: [SharedModule],

@@ -1,6 +1,6 @@
-import { Comment } from './../models/comment.model';
 import { Injectable } from '@angular/core';
 import faker from 'faker';
+import { Comment } from '@models/comment.model';
 
 @Injectable({
   providedIn: 'root'

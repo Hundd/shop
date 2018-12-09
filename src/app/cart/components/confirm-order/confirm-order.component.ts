@@ -1,6 +1,6 @@
 import { CartService } from './../../services/cart.service';
 import { Observable } from 'rxjs';
-import { IUniqProduct } from './../../../products/models/product.model';
+import { IUniqProduct } from '@models/product.model';
 import { ProductService } from './../../../products/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

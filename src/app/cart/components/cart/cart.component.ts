@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { CartService } from './../../services/cart.service';
-import { IUniqProduct } from './../../../products/models/product.model';
+import { IUniqProduct } from '@models/product.model';
 import { CartPopupService } from '../../services/cart-popup.service';
 
 @Component({

@@ -1,4 +1,3 @@
-import { ProductCategory } from './../../products/models/product.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

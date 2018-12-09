@@ -14,7 +14,7 @@ import {
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { IUniqProduct } from 'src/app/products/models/product.model';
+import { IUniqProduct } from '@models/product.model';
 
 const MAX_PRODUCTS_IN_CART = 999;
 

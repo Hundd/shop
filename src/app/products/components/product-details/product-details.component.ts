@@ -1,10 +1,11 @@
-import { CartPopupService } from './../../../cart/services/cart-popup.service';
-import { CartService } from './../../../cart/services/cart.service';
-import { Product, IProduct } from './../../models/product.model';
-import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+
+import { Product, IProduct } from '@models/product.model';
+import { CartPopupService } from './../../../cart/services/cart-popup.service';
+import { CartService } from './../../../cart/services/cart.service';
+import { ProductService } from './../../services/product.service';
 
 @Component({
   selector: 'app-product-details',

@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { ProductCategory } from './../models/product.model';
-import { IProduct } from '../models/product.model';
-import products from './productsData.json';
+import { ProductCategory, IProduct } from '@models/product.model';
+import { ApiService } from '@core/api.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  constructor(private http: HttpClient, private api: ApiService) {}
+
   getProducts(): Promise<Array<IProduct>> {
-    return Promise.resolve(products.map(product => buildProduct(product)));
+    return this.http
+      .get(this.api.products)
+      .toPromise()
+      .then((products: any[]) =>
+        products.map(product => buildProduct(product))
+      );
   }
 
   getProductById(id: string): Promise<IProduct | null> {
-    const product = products.find(product => product.id === id);
-
-    return product
-      ? Promise.resolve(buildProduct(product))
-      : Promise.resolve(null);
+    return this.http
+      .get(this.api.product(id))
+      .pipe(map(product => buildProduct(product)))
+      .toPromise();
   }
 }
 
