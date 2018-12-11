@@ -1,3 +1,14 @@
-<p>
-  edit-product works!
-</p>
+<ul class="product-list">
+    <li
+        *ngFor="let product of products | async trackBy: trackByFn"
+        class="product-list__item"
+        fxLayout="row"
+        fxLayouAlign="center stretch"
+    >
+        <app-admin-product
+            [product]="product"
+            (save)="onSave($event)"
+            (delete)="onDelete($event)"
+        ></app-admin-product>
+    </li>
+</ul>

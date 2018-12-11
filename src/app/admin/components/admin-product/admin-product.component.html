@@ -1,0 +1,130 @@
+<mat-card
+    class="product"
+    fxLayout="column"
+    fxLayoutGap="16px"
+>
+    <div
+        fxFlex="1 0 auto"
+        fxLayout="row"
+        fxLayoutAlign="center center"
+    >
+        <img
+            [src]="photo"
+            alt="product image"
+        >
+    </div>
+
+    <mat-card-content
+        fxFlex="0 0 auto"
+        fxLayout="column"
+        fxLayoutAlign="end"
+    >
+
+        <table class="product-table">
+            <tbody>
+                <tr>
+                    <td>Name</td>
+
+                    <td>
+                        <input
+                            class="product__input"
+                            type="text"
+                            name="name"
+                            [(ngModel)]="product.name"
+                        >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description</td>
+
+                    <td>
+                        <textarea
+                            class="product__input"
+                            [(ngModel)]="product.description"
+                            name="description"
+                            rows="3"
+                        ></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Price</td>
+
+                    <td>
+                        <input
+                            class="product__input"
+                            type="number"
+                            name="price"
+                            [(ngModel)]="product.price"
+                        >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Category</td>
+
+                    <td>
+                        <select
+                            [(ngModel)]="product.category"
+                            name="displayedCategory"
+                            class="product__input"
+                        >
+                            <option
+                                *ngFor="let category of displayedCategories"
+                                [ngValue]="category.value"
+                            >
+                                {{category.name}}
+                            </option>
+                        </select>
+                        <!-- {{ displayedCategory | uppercase}} -->
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Available</td>
+
+                    <td>
+                        <select
+                            [(ngModel)]="product.isAvailable"
+                            name="isAvailable"
+                            class="product__input"
+                        >
+                            <option [ngValue]="true">Yes</option>
+                            <option [ngValue]="false">No</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="end">
+
+        <button
+            (click)="onDelete()"
+            *ngIf="!isNew"
+            mat-raised-button
+            color="accent"
+        >
+            Delete
+        </button>
+        <button
+            (click)="onReset()"
+            mat-raised-button
+            color="accent"
+        >
+            Reset
+        </button>
+
+        <button
+            (click)="onSave()"
+            [disabled]="!valid()"
+            mat-raised-button
+            color="primary"
+        >
+            Save
+        </button>
+    </mat-card-actions>
+</mat-card>

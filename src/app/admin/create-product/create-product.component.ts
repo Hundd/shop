@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProductService } from 'src/app/products/services/product.service';
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.scss']
 })
 export class CreateProductComponent implements OnInit {
-  categories = ['Laptop', 'Desktop', 'SmartPhone', 'Tablet', 'EBook'];
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {}
+
+  onSave(product) {
+    this.productService.createProduct(product).subscribe(() => {
+      alert('Product created!');
+    });
+  }
 }
-// {
-//   "id": "7",
-//   "name": "Lorem ipsum product 3",
-//   "description": "Lorem ipsum product 3",
-//   "price": 19,
-//   "category": "Desktop",
-//   "isAvailable": true
-// }

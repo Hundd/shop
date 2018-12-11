@@ -30,9 +30,9 @@ export class Product implements IProduct {
 }
 
 export enum ProductCategory {
-  Laptop,
-  Desktop,
-  SmartPhone,
-  Tablet,
-  EBook
+  Laptop = 'Laptop',
+  Desktop = 'Desktop',
+  SmartPhone = 'SmartPhone',
+  Tablet = 'Tablet',
+  EBook = 'EBook'
 }

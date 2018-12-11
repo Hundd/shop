@@ -11,10 +11,10 @@
     },
     {
       "id": "1",
-      "name": "Nokia N800",
+      "name": "Nokia N8001",
       "description": "Tablet with no support for GSM voice communication, SMS, and MMS.",
       "price": 1999,
-      "category": "Tablet",
+      "category": "Laptop",
       "isAvailable": true,
       "photo": "/assets/images/tablet.jpg"
     },
@@ -67,6 +67,14 @@
       "price": 19,
       "category": "Desktop",
       "isAvailable": true
+    },
+    {
+      "name": "12312",
+      "description": "123123",
+      "price": 123123,
+      "category": "Laptop",
+      "isAvailable": true,
+      "id": "qgMp~kc"
     }
   ]
 }
