@@ -63,7 +63,7 @@ export class ConfirmOrderComponent implements OnInit, OnDestroy {
           return uniqProduct;
         }),
         tap(uniqProduct =>
-          this.cartService.addProduct(
+          this.cartService.createProduct(
             uniqProduct,
             parseInt(uniqProduct.quantity)
           )

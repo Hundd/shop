@@ -38,7 +38,19 @@ export class CartService {
     );
   }
 
-  addProduct(product: IProduct, quantity: number = 1) {
+  createProduct(product: IProduct, quantity: number = 1) {
+    this.productsMap.set(product.id, {
+      product,
+      name: product.name,
+      id: product.id,
+      price: product.price,
+      quantity
+    });
+
+    this.products.next(this.getUniqProducts());
+  }
+
+  addProduct(product: IProduct) {
     if (this.productsMap.has(product.id)) {
       const currentProduct = this.productsMap.get(product.id);
 
@@ -46,17 +58,11 @@ export class CartService {
         ...currentProduct,
         quantity: currentProduct.quantity + 1
       });
-    } else {
-      this.productsMap.set(product.id, {
-        product,
-        name: product.name,
-        id: product.id,
-        price: product.price,
-        quantity
-      });
-    }
 
-    this.products.next(this.getUniqProducts());
+      this.products.next(this.getUniqProducts());
+    } else {
+      this.createProduct(product);
+    }
   }
 
   changeQuantity(product: IUniqProduct) {
