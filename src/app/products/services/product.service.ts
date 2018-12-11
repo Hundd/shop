@@ -3,20 +3,26 @@ import { HttpClient } from '@angular/common/http';
 
 import { ProductCategory, IProduct } from '@models/product.model';
 import { ApiService } from '@core/api.service';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private _products = new BehaviorSubject<IProduct[]>([]);
+  public products: Observable<IProduct[]> = this._products.asObservable();
+
   constructor(private http: HttpClient, private api: ApiService) {}
 
   getProducts(): Promise<Array<IProduct>> {
     return this.http
       .get(this.api.products)
       .pipe(
-        map((products: any[]) => products.map(product => buildProduct(product)))
+        map((products: any[]) =>
+          products.map(product => buildProduct(product))
+        ),
+        tap(products => this._products.next(products))
       )
       .toPromise();
   }
@@ -28,15 +34,21 @@ export class ProductService {
   }
 
   createProduct(product) {
-    return this.http.post(this.api.products, product);
+    return this.http
+      .post(this.api.products, product)
+      .pipe(tap(() => this.getProducts()));
   }
 
   updateProduct(product) {
-    return this.http.put(this.api.product(product.id), product);
+    return this.http
+      .put(this.api.product(product.id), product)
+      .pipe(tap(() => this.getProducts()));
   }
 
   deleteProduct(product) {
-    return this.http.delete(this.api.product(product.id));
+    return this.http
+      .delete(this.api.product(product.id))
+      .pipe(tap(() => this.getProducts()));
   }
 }
 

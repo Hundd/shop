@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/products/services/product.service';
 import { IProduct } from '@models/product.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-product',
@@ -8,11 +9,11 @@ import { IProduct } from '@models/product.model';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
-  products: Promise<IProduct[]>;
+  products: Observable<IProduct[]>;
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products = this.productService.products;
   }
 
   onSave(product) {
@@ -22,9 +23,7 @@ export class EditProductComponent implements OnInit {
   }
 
   onDelete(product) {
-    this.productService.deleteProduct(product).subscribe(() => {
-      this.products = this.productService.getProducts();
-    });
+    this.productService.deleteProduct(product).subscribe(() => {});
   }
 
   trackByFn(_, item) {

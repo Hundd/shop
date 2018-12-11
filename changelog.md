@@ -83,3 +83,6 @@
    - it handles only GET request to /products endpoint
 
 5. - add app.settings service and assets/settings.json file
+
+- Updated Admin page to show products
+- Enable CRUD on Admin page
