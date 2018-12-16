@@ -12,6 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { CartModule } from './cart/cart.module';
 import { PagesModule } from './pages/pages.module';
 import { ProductsModule } from './products/products.module';
+import { StoreModule } from '@ngrx/store';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +29,8 @@ import { ProductsModule } from './products/products.module';
     ProductsModule,
     SharedModule,
     PagesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
     {

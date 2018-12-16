@@ -1,3 +1,5 @@
+import { CoreStoreModule } from './store/store.module';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +18,7 @@ const randomStringLength = 32;
       useFactory: GeneratorFactory(randomStringLength)
     }
   ],
-  imports: [CommonModule, CartModule]
+  imports: [CommonModule, CartModule, CoreStoreModule],
+  exports: [CoreStoreModule]
 })
 export class CoreModule {}
